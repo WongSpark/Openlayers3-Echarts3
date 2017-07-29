@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ol3-Echarts3</title>
+    <style>
+        html, body, #map {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+			width:100%;
+        }
+    </style>
+    <link rel="stylesheet" href="ec3/ol.css" type="text/css">
+
+</head>
+<body>
+    <div id="map"></div>
+    <script src="ec3/dat.js"></script>
+    <script src="ec3/ol-debug.js"></script>
+    <script src="ec3/jquery-2.1.1.min.js"></script>
+    <script src="ec3/echarts.js"></script>
+    <script src="ec3/AdvancedMap3.js"></script>
+    <script>
+        $(document).ready(function () {
+            var ext=new ADMap.MigrationLayer({
+                map:new ol.Map({
+                    target: 'map',
+                    controls: [],
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM()
+                        })
+                    ],
+                    view: new ol.View({
+                        projection:'EPSG:4326',
+                        center: [122.45, 37.75],
+                        zoom: 4
+                    })
+                }),
+                echart:echarts,
+                type:'migration',
+                source:[['北京', BJData], ['上海', SHData], ['广州', GZData]]
+            });
+        });
+    </script>
+</body>
+</html>
